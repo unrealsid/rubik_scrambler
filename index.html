@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <!--@Author: XanderWraik 
+<<<<<<< HEAD
 	ProjectEchelon DeltaBuild
     Modifications suggested by stackoverflow user vals
 	Text scrambler: designed by jnrbsn:  https://github.com/jnrbsn/rubiks-cube-scrambler
     Three.js version: r68 -->
+=======
+	ProjectEchelon
+    	Modifications suggested by stackoverflow user vals
+	Text scrambler designed by jnrbsn: https://github.com/jnrbsn/rubiks-cube-scrambler
+    	Three.js version: r68 -->
+>>>>>>> origin/gh-pages
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -113,7 +120,6 @@
         var active = [];
         var planes = [];
         var objects = [];
-		var activeCounterHistory = [];
 
         var pivot;
 		
@@ -125,7 +131,7 @@
             var aspectRatio = canvasWidth / canvasHeight;
 
             //Renderer:
-			renderer = Detector.webgl? new THREE.WebGLRenderer(): errorMessage();
+	    renderer = Detector.webgl? new THREE.WebGLRenderer(): errorMessage();
             //renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.gammaInput = true;
             renderer.gammaOutput = true;
