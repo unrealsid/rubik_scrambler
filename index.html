@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--@Author: XanderWraik 
-	ProjectEchelon DeltaBuild
-    Modifications suggested by stackoverflow user vals
-	Thanks to the jnrbsn for the scrambler: https://github.com/jnrbsn/rubiks-cube-scrambler
-    Three.js version: r68 -->
+	ProjectEchelon
+    	Modifications suggested by stackoverflow user vals
+	Scrambler designed by jnrbsn: https://github.com/jnrbsn/rubiks-cube-scrambler
+    	Three.js version: r68 -->
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -89,7 +89,7 @@
     <script src="Libraries/OrbitControls.js"></script>
 	<script src="Libraries/cubies.js"></script>
 	<script src="Libraries/SceneUtils.js"></script>
-    <script src="Libraries/FaceRotations.js"></script>
+    <script src="Libraries/faceRotations.js"></script>
     <script src="Libraries/EventListeners.js"></script>
 	<script src="Libraries/scrambleEngine.js"></script>
 	<script src="Libraries/scrambleGenerator.js"></script>
@@ -113,7 +113,6 @@
         var active = [];
         var planes = [];
         var objects = [];
-		var activeCounterHistory = [];
 
         var pivot;
 		
@@ -125,7 +124,7 @@
             var aspectRatio = canvasWidth / canvasHeight;
 
             //Renderer:
-			renderer = Detector.webgl? new THREE.WebGLRenderer(): errorMessage();
+	    renderer = Detector.webgl? new THREE.WebGLRenderer(): errorMessage();
             //renderer = new THREE.WebGLRenderer({ antialias: true });
             renderer.gammaInput = true;
             renderer.gammaOutput = true;
