@@ -125,8 +125,7 @@
             var aspectRatio = canvasWidth / canvasHeight;
 
             //Renderer:
-	    renderer = Detector.webgl? new THREE.WebGLRenderer(): errorMessage();
-            //renderer = new THREE.WebGLRenderer({ antialias: true });
+	    renderer = Detector.webgl? new THREE.WebGLRenderer({ antialias: true }): errorMessage();
             renderer.gammaInput = true;
             renderer.gammaOutput = true;
             renderer.setClearColor(0xFFFFFF);
@@ -142,10 +141,11 @@
             addEventListeners();
         }
 
+
 		function errorMessage()
 		{
-			alert("WebGL Not supported. Switching to canvas renderer. May get slow... You have been warned :p");
-			renderer = new THREE.CanvasRenderer();
+			alert("Snap! WebGL is either not supported or your GPU is blacklisted!");
+			return new THREE.CanvasRenderer();
 		}
 		
         function fillScene()
