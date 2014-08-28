@@ -1,4 +1,4 @@
-RandomScrambler
+Rubik's Cube Scrambler
 ===============
 
-An implementation of a Random Scrambler for a Rubik's Cube.
+An implementation of an animated scrambler for a Rubik's Cube.
