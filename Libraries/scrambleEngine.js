@@ -10,102 +10,102 @@ function loadScramble(scrambleVector)
 		{
 			case "R2":
 				console.log("R2");
-				rotationSet.push(rotateR);
-				rotationSet.push(rotateR);
+				rotationSet.push(function() {rotateFace("x", "right", 109, 111)});
+				rotationSet.push(function() {rotateFace("x", "right", 109, 111)});
 				break;
 			
 			case "U2":
 				console.log("U2");
-				rotationSet.push(rotateU);
-				rotationSet.push(rotateU);
+				rotationSet.push(function(){rotateFace("y", "up", 109, 111)});
+				rotationSet.push(function() {rotateFace("y", "up", 109, 111)});
 				break;
 				
 			case "F2":
 				console.log("F2");	
-				rotationSet.push(rotateF);
-				rotationSet.push(rotateF);
+				rotationSet.push(function(){rotateFace("z", "front", 109, 111)});
+				rotationSet.push(function(){rotateFace("z", "front", 109, 111)});
 				break;
 				
 			case "B2":
-				rotationSet.push(rotateB);
-				rotationSet.push(rotateB);
+				rotationSet.push(function(){rotateFace("z", "back", -111, -109)});
+				rotationSet.push(function(){rotateFace("z", "back", -111, -109)});
 				break;
 				
 			case "L2":
-				rotationSet.push(rotateL);
-				rotationSet.push(rotateL);
+				rotationSet.push(function(){rotateFace("x", "left", -111, -109)});
+				rotationSet.push(function(){rotateFace("x", "left", -111, -109)});
 				break;
 				
 			case "D2":
-				rotationSet.push(rotateD);
-				rotationSet.push(rotateD);
+				rotationSet.push(function(){rotateFace("y", "down", -111, -109)});
+				rotationSet.push(function(){rotateFace("y", "down", -111, -109)});
 				break;	
 				
 			case "M2":
-				rotationSet.push(rotateM);
-				rotationSet.push(rotateM);
+				rotationSet.push(function(){rotateFace("x", "middle", -1, 1) });
+				rotationSet.push(function(){rotateFace("x", "middle", -1, 1)});
 				break;
 				
 			case "R'":
 				console.log("R'");
-				rotationSet.push(rotateR_P);
+				rotationSet.push(function(){rotateFace("x", "rightP", 109, 111)});
 				break;
 			
 			case "U'":
 				console.log("U'");
-				rotationSet.push(rotateU_P);
+				rotationSet.push(function(){rotateFace("y", "upP", 109, 111)});
 				break;
 				
 			case "F'":
 				console.log("F'");	
-				rotationSet.push(rotateF_P);
+				rotationSet.push(function(){rotateFace("z", "frontP", 109, 111)});
 				break;
 				
 			case "B'":
-				rotationSet.push(rotateB_P);
+				rotationSet.push(function(){rotateFace("z", "backP", -111, -109)});
 				break;
 				
 			case "L'":
-				rotationSet.push(rotateL_P);
+				rotationSet.push(function(){rotateFace("x", "leftP", -111, -109)});
 				break;
 				
 			case "D'":
-				rotationSet.push(rotateD_P);
+				rotationSet.push(function(){rotateFace("y", "downP", -111, -109)});
 				break;	
 				
 			case "M'":
-				rotationSet.push(rotateM_P);
+				rotationSet.push(function(){rotateFace("x", "middleP", -1, 1) });
 				break;
 			
 			case "R":
 				console.log("R");
-				rotationSet.push(rotateR);
+				rotationSet.push(function() {rotateFace("x", "right", 109, 111)});
 				break;
 			
 			case "U":
 				console.log("U");
-				rotationSet.push(rotateU);
+				rotationSet.push(function(){rotateFace("y", "up", 109, 111)});
 				break;
 				
 			case "F":
 				console.log("F");	
-				rotationSet.push(rotateF);
+				rotationSet.push(function(){rotateFace("z", "front", 109, 111)});
 				break;
 				
 			case "B":
-				rotationSet.push(rotateB);
+				rotationSet.push(function(){rotateFace("z", "back", -111, -109)});
 				break;
 				
 			case "L":
-				rotationSet.push(rotateL);
+				rotationSet.push(function(){rotateFace("x", "left", -111, -109)});
 				break;
 				
 			case "D":
-				rotationSet.push(rotateD);
+				rotationSet.push(function(){rotateFace("y", "down", -111, -109)});
 				break;	
 				
 			case "M":
-				rotationSet.push(rotateM);
+				rotationSet.push(function(){rotateFace("x", "middle", -1, 1) });
 				break;
 		}
 	}
