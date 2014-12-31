@@ -94,6 +94,8 @@ function rotateFace(axisOfRot, faceOdr, lim1, lim2)
 		if(item === faceOdr)
 			attached[item] = true;
 	}	
+	animating = true;
+	animate();
 }
 
 

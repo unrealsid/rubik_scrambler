@@ -24,7 +24,7 @@
 			<p>@Author: XanderWraik</p>    
         </div>
 		<div style="position: absolute; top:500px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
-			Toggle Orientation Labels Display <input type="checkbox" id="dispOrientationLabels"  />
+			Toggle Orientation Labels Display <input type="checkbox" id="dispOrientationLabels" onclick="window.animate()" />
 		</div>
 		
     </body>
@@ -59,6 +59,7 @@
         var cubies = [];
         var objects = [];
 		var text = [];
+        var animating = false;
         var itemToAxis = {X: "-x", left: "+x", middle:  "+x", right: "-x",
                           Y: "-y", down: "+y", equator: "+y", up:    "-y",
                           Z: "-z", back: "+z", slice:   "+z", front: "-z"};
@@ -153,10 +154,13 @@
 			stats.domElement.style.left = '10px'; 
             container.appendChild(stats.domElement);
         }
-		
+
         function animate()
         {
-            window.requestAnimationFrame(animate);
+            // This method renders what needs to be rendered.  If "animating"
+            // then this method needs to be called again in the near future.
+            if (animating)
+                window.requestAnimationFrame(animate);
             render();
         }
 		
@@ -174,6 +178,8 @@
             pivot.rotation.x = 0;
             pivot.rotation.y = 0;
             pivot.rotation.z = 0;
+
+            animating = false;
         }
 
         function render()
