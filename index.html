@@ -26,6 +26,9 @@
 		<div style="position: absolute; top:500px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
 			Toggle Orientation Labels Display <input type="checkbox" id="dispOrientationLabels" onclick="window.animate()" />
 		</div>
+		<div style="position: absolute; top:520px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
+			Skip animation <input type="checkbox" id="skipAnimation" />
+		</div>
 		
     </body>
     <script src="Libraries/three.min.js"></script>
@@ -225,7 +228,8 @@
                     {
                         sign = -sign;
                     }
-                    pivot.rotation[axis] += sign * 0.091;
+                    pivot.rotation[axis] += sign * (
+                        document.getElementById("skipAnimation").checked ? Math.PI / 2.0 : 0.091);
                     if (Math.abs(pivot.rotation[axis]) >= Math.PI / 2.0)
                     {
                         pivot.rotation[axis] = sign * Math.PI / 2.0;

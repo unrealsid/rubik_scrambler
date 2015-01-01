@@ -115,9 +115,18 @@ function loadScramble(scrambleVector)
 function setCubeRotations(func)
 {
 	var count = 0;
+	var skipAnimation = document.getElementById("skipAnimation").checked;
+
 	for(var i = 0; i < func.length; i++)
 	{
-		setTimeout(func[i], count);
-		count += 700;
+		if (skipAnimation)
+		{
+		    func[i]();
+		}
+		else
+		{
+		    setTimeout(func[i], count);
+		    count += 700;
+		}
 	}
 }
