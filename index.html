@@ -66,15 +66,15 @@
         var cubieDist = 110; // Distance between centers of adjacent cubies.
 
         // The following lookup tables should be kept in sync and in alphabetical order by key.
-        var eventToRotation = {R: ["x", "right",     1,  1],
-                               U: ["y", "up",        1,  1],
+        var eventToRotation = {B: ["z", "back",     -1, -1],
+                               D: ["y", "down",     -1, -1],
+                               E: ["y", "equator",   0,  0],
                                F: ["z", "front",     1,  1],
-                               B: ["z", "back",     -1, -1],
                                L: ["x", "left",     -1, -1],
                                M: ["x", "middle",    0,  0],
-                               E: ["y", "equator",   0,  0],
+                               R: ["x", "right",     1,  1],
                                S: ["z", "standing",  0,  0],
-                               D: ["y", "down",     -1, -1],
+                               U: ["y", "up",        1,  1],
                                X: ["x", "X",        -1,  1],
                                Y: ["y", "Y",        -1,  1],
                                Z: ["z", "Z",        -1,  1]};
