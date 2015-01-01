@@ -27,6 +27,21 @@ function onDocumentKeyDown(event)
 		// Regular movement
 		args = args.slice(); // Copy so the original is not changed.
 		args[1] += event.shiftKey ? "P" : ""; // Append P for prime.
+		if (event.altKey && args[2] && (args[2] == args[3]))
+		{
+			// If the args are non-zero and the same then that means
+			// that alt was pressed with for one of the sides.  In
+			// this case a double move is done by extending the
+			// limits so that the origin is included.
+			if (args[2] < 0)
+			{
+				args[3] = 0;
+			}
+			else
+			{
+				args[2] = 0;
+			}
+		}
 		// Convert the -1, 0, 1 placement along the axes to limits
 		// given the cubieDist between them.  The limits are inclusive.
 		args[2] = cubieDist * args[2] - 1; // Lower limit, so 1 before.
