@@ -174,10 +174,9 @@
 
             active.length = 0;
             activeCount = 0;
-			
-			for(var i in attached)
-				attached[i] = false;
-				
+
+            attached = {};
+
             pivot.rotation.x = 0;
             pivot.rotation.y = 0;
             pivot.rotation.z = 0;
@@ -209,10 +208,6 @@
             for (var item in attached) 
             {
                 var value = attached[item];
-                if (!value)
-                {
-                    continue;
-                }
                 var sign = 1;
                 if (item.substr(-1) == "P")
                 {
