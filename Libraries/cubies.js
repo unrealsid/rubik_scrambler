@@ -2,7 +2,7 @@
 
 		function createCubies()
 		{
-			var cubieGeometry = new THREE.BoxGeometry(100, 100, 100, 15, 15, 15);
+			var cubieGeometry = new THREE.BoxGeometry(100, 100, 100);
 			var cubieMaterial = [];
 			cubieMaterial = setCubieMaterial();
 			
