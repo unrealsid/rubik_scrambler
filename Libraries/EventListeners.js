@@ -67,8 +67,9 @@ function onDocumentKeyDown(event)
 				animate();
 				break;
 			case "Q": // (Q)uit the current cube
-				// TODO: Find a better way of doing this.
-				location.reload();
+				// location.reload();
+                resetScene();
+                animate();
 				break;
 		}
 	}

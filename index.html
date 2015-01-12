@@ -134,7 +134,23 @@
 				
 				scene.add(text[i]);
 			}
-			
+        }
+
+        function resetScene()
+        {
+            // Remove the existing cubies.
+            for (var i = 0; i < cubies.length; i++)
+			{
+			    scene.remove(cubies[i]);
+            }
+
+            // Create a new list of cubies.
+            cubies = [];
+            cubies = new createCubies();
+            for (var i = 0; i < cubies.length; i++)
+			{
+			    scene.add(cubies[i]);
+            }
         }
 
 		var obj;
