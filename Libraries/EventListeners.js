@@ -47,6 +47,7 @@ function onDocumentKeyDown(event)
 		args[2] = cubieDist * args[2] - 1; // Lower limit, so 1 before.
 		args[3] = cubieDist * args[3] + 1; // Lower limit, so 1 after.
 		rotateFace.apply(this, args);
+        argsList.push(args);
 	}
 	else
 	{
@@ -58,6 +59,19 @@ function onDocumentKeyDown(event)
 				var animCB = document.getElementById("skipAnimation");
 				animCB.checked = !animCB.checked;
 				break;
+			case "G": // Undo (like Ctrl-G in Emacs)
+                args = argsList.pop();
+                if (args)
+                {
+                    faceOdr = args[1];
+                    if (faceOdr[faceOdr.length - 1] == "P")
+                        faceOdr = faceOdr.substr(0, faceOdr.length - 1);
+                    else
+                        faceOdr += "P";
+                    args[1] = faceOdr;
+                    rotateFace.apply(this, args);
+                }
+                break;
 			case "H": // (H)ide toggle
 				visible = !visible;
 				var visibility = visible ? "visible" : "hidden";
@@ -75,6 +89,7 @@ function onDocumentKeyDown(event)
 				break;
 			case "N": // (N)ew cube (scramble)
 				displayScramble();
+                argsList = [];
 				break;
 			case "O": // (O)rientation display toggle.
 				var orientCB = document.getElementById("dispOrientationLabels");
@@ -84,6 +99,7 @@ function onDocumentKeyDown(event)
 			case "Q": // (Q)uit the current cube
 				// location.reload();
                 resetScene();
+                argsList = [];
                 animate();
 				break;
 		}
