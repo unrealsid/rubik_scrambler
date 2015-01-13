@@ -58,6 +58,21 @@ function onDocumentKeyDown(event)
 				var animCB = document.getElementById("skipAnimation");
 				animCB.checked = !animCB.checked;
 				break;
+			case "H": // (H)ide toggle
+				visible = !visible;
+				var visibility = visible ? "visible" : "hidden";
+                                var index;
+                var ids = ["stats", "info", "checkboxes", "btn-refresh", "scramble"];
+                for (var index = 0; index < ids.length; ++index)
+                {
+                    var elem = document.getElementById(ids[index]);
+                    if (elem)
+                    {
+                        elem.style.visibility = visibility;
+                    }
+                }
+
+				break;
 			case "N": // (N)ew cube (scramble)
 				displayScramble();
 				break;

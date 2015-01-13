@@ -23,12 +23,14 @@
 			<p>Shift + key for anti-clockwise and Alt + key for double.</p>
 			<p>@Author: XanderWraik</p>    
         </div>
-		<div style="position: absolute; top:500px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
-			Toggle Orientation Labels Display <input type="checkbox" id="dispOrientationLabels" onclick="window.animate()" />
-		</div>
-		<div style="position: absolute; top:520px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
-			Skip animation <input type="checkbox" id="skipAnimation" />
-		</div>
+        <div id="checkboxes">
+            <div style="position: absolute; top:500px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
+                Toggle Orientation Labels Display <input type="checkbox" id="dispOrientationLabels" onclick="window.animate()" />
+            </div>
+            <div style="position: absolute; top:520px; left:10px; font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; font-size: 15px;">
+                Skip animation <input type="checkbox" id="skipAnimation" />
+            </div>
+        </div>
 		
     </body>
     <script src="Libraries/three.min.js"></script>
@@ -64,6 +66,7 @@
 		var text = [];
         var animating = false;
         var cubieDist = 110; // Distance between centers of adjacent cubies.
+        var visible = true;  
 
         // The following lookup tables should be kept in sync and in alphabetical order by key.
         var eventToRotation = {B: ["z", "back",     -1, -1],
