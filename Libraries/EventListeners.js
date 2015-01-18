@@ -87,20 +87,19 @@ function onDocumentKeyDown(event)
                 }
 
 				break;
-			case "N": // (N)ew cube (scramble)
+			case "J": // (J)umble (S was taken)
 				displayScramble();
                 argsList = [];
+				break;
+			case "N": // (N)new cube
+                resetScene();
+                argsList = [];
+                animate();
 				break;
 			case "O": // (O)rientation display toggle.
 				var orientCB = document.getElementById("dispOrientationLabels");
 				orientCB.checked = !orientCB.checked;
 				animate();
-				break;
-			case "Q": // (Q)uit the current cube
-				// location.reload();
-                resetScene();
-                argsList = [];
-                animate();
 				break;
 		}
 	}
