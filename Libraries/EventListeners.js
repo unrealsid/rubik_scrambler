@@ -59,6 +59,12 @@ function onDocumentKeyDown(event)
 				var animCB = document.getElementById("skipAnimation");
 				animCB.checked = !animCB.checked;
 				break;
+			case "C": // (C)orner view toggle
+                // TODO: Add a checkbox?
+				cornerView = !cornerView;
+                setCamera();
+                animate();
+                break;
 			case "G": // Undo (like Ctrl-G in Emacs)
                 args = argsList.pop();
                 if (args)
