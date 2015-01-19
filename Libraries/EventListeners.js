@@ -27,6 +27,7 @@ function onDocumentKeyDown(event)
 		// Regular movement
 		args = args.slice(); // Copy so the original is not changed.
 		args[1] += event.shiftKey ? "P" : ""; // Append P for prime.
+        var desc = args[1];
 		if (event.altKey && args[2] && (args[2] == args[3]))
 		{
 			// If the args are non-zero and the same then that means
@@ -41,12 +42,14 @@ function onDocumentKeyDown(event)
 			{
 				args[2] = 0;
 			}
+            desc += "Double";
 		}
 		// Convert the -1, 0, 1 placement along the axes to limits
 		// given the cubieDist between them.  The limits are inclusive.
 		args[2] = cubieDist * args[2] - 1; // Lower limit, so 1 before.
 		args[3] = cubieDist * args[3] + 1; // Lower limit, so 1 after.
 		rotateFace.apply(this, args);
+        console.log(desc);
         argsList.push(args);
 	}
 	else
@@ -66,6 +69,7 @@ function onDocumentKeyDown(event)
                 animate();
                 break;
 			case "G": // Undo (like Ctrl-G in Emacs)
+                console.log("undo");
                 args = argsList.pop();
                 if (args)
                 {
@@ -94,10 +98,13 @@ function onDocumentKeyDown(event)
 
 				break;
 			case "J": // (J)umble (S was taken)
+                console.log("jumble begin");
 				displayScramble();
+                console.log("jumble end");
                 argsList = [];
 				break;
 			case "N": // (N)new cube
+                console.log("new");
                 resetScene();
                 argsList = [];
                 animate();
