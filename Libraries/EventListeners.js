@@ -20,96 +20,100 @@ function onWindowResize(event)
 		
 function onDocumentKeyDown(event)
 {
-	if(event.shiftKey)
+	var eventChar = String.fromCharCode(event.keyCode)
+	var args = eventToRotation[eventChar];
+	if (args)
 	{
-		console.log("shift = true");
-		
-		switch( event.keyCode )
+		// Regular movement
+		args = args.slice(); // Copy so the original is not changed.
+		args[1] += event.shiftKey ? "P" : ""; // Append P for prime.
+        var desc = args[1];
+		if (event.altKey && args[2] && (args[2] == args[3]))
 		{
-			//R
-			case 82:
-				rotateFace("x", "rightP", 109, 111);
+			// If the args are non-zero and the same then that means
+			// that alt was pressed with for one of the sides.  In
+			// this case a double move is done by extending the
+			// limits so that the origin is included.
+			if (args[2] < 0)
+			{
+				args[3] = 0;
+			}
+			else
+			{
+				args[2] = 0;
+			}
+            desc += "Double";
+		}
+		// Convert the -1, 0, 1 placement along the axes to limits
+		// given the cubieDist between them.  The limits are inclusive.
+		args[2] = cubieDist * args[2] - 1; // Lower limit, so 1 before.
+		args[3] = cubieDist * args[3] + 1; // Lower limit, so 1 after.
+		rotateFace.apply(this, args);
+        console.log(desc);
+        argsList.push(args);
+	}
+	else
+	{
+		// Special keys
+		switch (eventChar)
+		{
+			// A lot of good letters were already taken.
+			case "A": // (A)nimation toggle
+				var animCB = document.getElementById("skipAnimation");
+				animCB.checked = !animCB.checked;
 				break;
-		
-			//U
-			case 85:
-				rotateFace("y", "upP", 109, 111);
+			case "C": // (C)orner view toggle
+                // TODO: Add a checkbox?
+				cornerView = !cornerView;
+                setCamera();
+                animate();
+                break;
+			case "G": // Undo (like Ctrl-G in Emacs)
+                console.log("undo");
+                args = argsList.pop();
+                if (args)
+                {
+                    faceOdr = args[1];
+                    if (faceOdr[faceOdr.length - 1] == "P")
+                        faceOdr = faceOdr.substr(0, faceOdr.length - 1);
+                    else
+                        faceOdr += "P";
+                    args[1] = faceOdr;
+                    rotateFace.apply(this, args);
+                }
+                break;
+			case "H": // (H)ide toggle
+				visible = !visible;
+				var visibility = visible ? "visible" : "hidden";
+                                var index;
+                var ids = ["stats", "info", "checkboxes", "btn-refresh", "scramble"];
+                for (var index = 0; index < ids.length; ++index)
+                {
+                    var elem = document.getElementById(ids[index]);
+                    if (elem)
+                    {
+                        elem.style.visibility = visibility;
+                    }
+                }
+
 				break;
-			
-			//F
-			case 70:
-				rotateFace("z", "frontP", 109, 111);
+			case "J": // (J)umble (S was taken)
+                console.log("jumble begin");
+				displayScramble();
+                console.log("jumble end");
+                argsList = [];
 				break;
-			
-			//B
-			case 66:
-				rotateFace("z", "backP", -111, -109)
+			case "N": // (N)new cube
+                console.log("new");
+                resetScene();
+                argsList = [];
+                animate();
 				break;
-		
-			//L
-			case 76:
-				rotateFace("x", "leftP", -111, -109);
-				break;
-				
-			case 77:
-			rotateFace("x", "middleP", -1, 1);
-			break;
-		
-			//D
-			case 68:
-				rotateFace("y", "downP", -111, -109);
+			case "O": // (O)rientation display toggle.
+				var orientCB = document.getElementById("dispOrientationLabels");
+				orientCB.checked = !orientCB.checked;
+				animate();
 				break;
 		}
-		return;
 	}
-	
-	switch(event.keyCode)
-	{
-		//R
-		case 82:
-			rotateFace("x", "right", 109, 111);
-			break;
-		
-		//U
-		case 85:
-			rotateFace("y", "up", 109, 111);
-			break;
-			
-		//F
-		case 70:
-			rotateFace("z", "front", 109, 111);
-			break;
-			
-		//B
-		case 66:
-			rotateFace("z", "back", -111, -109)
-			break;
-		
-		//L
-		case 76:
-			rotateFace("x", "left", -111, -109);
-			break;
-		
-		//D
-		case 68:
-			rotateFace("y", "down", -111, -109);
-			break;
-		
-		case 77:
-			rotateFace("x", "middle", -1, 1);
-			break;
-		
-		case 88:
-			rotateFace("x", "X", null, null);
-			break;
-			
-		case 89:
-			rotateFace("y", "Y", null, null);
-			break;
-			
-		case 90:
-			rotateFace("z", "Z", null, null);
-			break;
-	}
-	
 }
