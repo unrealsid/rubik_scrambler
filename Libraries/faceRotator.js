@@ -1,7 +1,36 @@
 var active = [];
 var activeCount = 0;
 var pivot = new THREE.Object3D();
-var attached = {};
+
+var attached = 
+{
+	 "left": false,
+	 "leftP": false,
+	
+	 "down": false,
+	 "downP": false,
+	
+	 "back": false,
+	 "backP": false,
+	
+	 "right": false,
+	 "rightP": false,
+	
+	 "up": false,
+	 "upP": false,
+	
+	 "front": false,
+	 "frontP": false,
+	
+	 "middle": false,
+	 "middleP": false,
+	 
+	 "X": false,
+	 
+	 "Y": false,
+	
+	 "Z": false, 
+};
 
 function getObjWorldPos(object)
 {
@@ -59,10 +88,12 @@ function rotateFace(axisOfRot, faceOdr, lim1, lim2)
 	
 	for(var i = 0; i < active.length; i++)
 		THREE.SceneUtils.attach(active[i], scene, pivot);
-
-	attached[faceOdr] = true;
-	animating = true;
-	animate();
+	
+	for(var item in attached)
+	{
+		if(item === faceOdr)
+			attached[item] = true;
+	}	
 }
 
 
